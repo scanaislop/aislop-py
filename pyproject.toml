@@ -1,14 +1,14 @@
 [build-system]
-requires = ["setuptools>=69", "wheel"]
+requires = ["setuptools>=77", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "aislop"
 version = "0.10.2"
-description = "Python launcher for the aislop CLI"
+description = "Install aislop with Python tooling and scan your code for AI slop"
 readme = "README.md"
 requires-python = ">=3.9"
-license = { text = "MIT" }
+license = "MIT"
 authors = [
   { name = "Kenny Olawuwo" }
 ]
@@ -23,7 +23,6 @@ classifiers = [
   "Development Status :: 4 - Beta",
   "Environment :: Console",
   "Intended Audience :: Developers",
-  "License :: OSI Approved :: MIT License",
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3 :: Only",
   "Topic :: Software Development :: Quality Assurance"
@@ -32,7 +31,9 @@ classifiers = [
 [project.urls]
 Homepage = "https://scanaislop.com"
 Repository = "https://github.com/scanaislop/aislop"
+Documentation = "https://scanaislop.com/docs"
 Issues = "https://github.com/scanaislop/aislop/issues"
+Homebrew = "https://github.com/scanaislop/homebrew-tap"
 
 [project.scripts]
 aislop = "aislop_py.cli:main"
