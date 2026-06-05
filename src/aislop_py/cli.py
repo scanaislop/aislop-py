@@ -7,7 +7,7 @@ import sys
 NPM_PACKAGE = os.environ.get("AISLOP_NPM_PACKAGE", "aislop@0.10.2")
 
 
-def _command(bin_name: str, argv: list[str]) -> list[str]:
+def _command(bin_name: str, argv: list[str]) -> list[str] | None:
     npx = shutil.which("npx")
     if npx:
         return [npx, "--yes", "--package", NPM_PACKAGE, bin_name, *argv]
@@ -16,15 +16,16 @@ def _command(bin_name: str, argv: list[str]) -> list[str]:
     if npm:
         return [npm, "exec", "--yes", "--package", NPM_PACKAGE, "--", bin_name, *argv]
 
-    raise RuntimeError("aislop requires Node.js with npm/npx available on PATH.")
+    return None
 
 
 def _run(bin_name: str, argv: list[str] | None = None) -> int:
     args = list(sys.argv[1:] if argv is None else argv)
-    try:
-        command = _command(bin_name, args)
-    except RuntimeError as exc:
-        print(str(exc), file=sys.stderr)
+    command = _command(bin_name, args)
+    if command is None:
+        print(
+            "aislop requires Node.js with npm/npx available on PATH.", file=sys.stderr
+        )
         return 127
 
     os.execv(command[0], command)

@@ -8,7 +8,10 @@ from aislop_py import cli
 
 class CommandTest(unittest.TestCase):
     def test_command_prefers_npx(self) -> None:
-        with mock.patch("shutil.which", side_effect=lambda name: f"/bin/{name}" if name == "npx" else None):
+        with mock.patch(
+            "shutil.which",
+            side_effect=lambda name: f"/bin/{name}" if name == "npx" else None,
+        ):
             self.assertEqual(
                 cli._command("aislop", ["--version"]),
                 [
@@ -22,7 +25,10 @@ class CommandTest(unittest.TestCase):
             )
 
     def test_command_falls_back_to_npm_exec(self) -> None:
-        with mock.patch("shutil.which", side_effect=lambda name: f"/bin/{name}" if name == "npm" else None):
+        with mock.patch(
+            "shutil.which",
+            side_effect=lambda name: f"/bin/{name}" if name == "npm" else None,
+        ):
             self.assertEqual(
                 cli._command("aislop-mcp", []),
                 [
@@ -38,8 +44,7 @@ class CommandTest(unittest.TestCase):
 
     def test_command_errors_when_node_tooling_is_missing(self) -> None:
         with mock.patch("shutil.which", return_value=None):
-            with self.assertRaisesRegex(RuntimeError, "Node.js"):
-                cli._command("aislop", [])
+            self.assertIsNone(cli._command("aislop", []))
 
 
 if __name__ == "__main__":
