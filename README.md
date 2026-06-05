@@ -85,28 +85,13 @@ git push
 
 ## Publish To PyPI
 
-When ready:
+Publishing is automated from GitHub Actions:
 
-1. Make sure the `aislop` PyPI name is still available.
-2. Build the package:
+- `test` publishes to TestPyPI.
+- `develop` does not publish.
+- `main` publishes to PyPI.
 
-```sh
-python3 -m pip install --upgrade build twine
-python3 -m build
-```
-
-3. Upload:
-
-```sh
-python3 -m twine upload dist/*
-```
-
-4. Verify from a clean environment:
-
-```sh
-pipx install aislop
-aislop --version
-```
+See [`docs/publishing.md`](docs/publishing.md).
 
 ## Troubleshooting
 
