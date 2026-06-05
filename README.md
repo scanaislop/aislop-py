@@ -46,6 +46,18 @@ npx --yes --package aislop@0.10.2 aislop
 
 That keeps this package small, but it also means first run may download the npm package if it is not already cached.
 
+## Versioning Model
+
+The Python package version should track the npm CLI version. For example, `aislop==0.10.2` launches `aislop@0.10.2`.
+
+Do not default this launcher to `aislop@latest`: a user who installs a fixed PyPI version expects that installed package to keep running the same CLI version until they upgrade it.
+
+For temporary testing only, override the npm package:
+
+```sh
+AISLOP_NPM_PACKAGE=aislop@latest aislop --version
+```
+
 ## Upgrade Users
 
 Private git install:
