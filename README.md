@@ -2,6 +2,15 @@
 
 This package exposes the `aislop` command for Python and `pipx` users.
 
+Private install:
+
+```sh
+pipx install git+ssh://git@github.com/scanaislop/aislop-py.git
+aislop scan
+```
+
+Public install, once the package is published to PyPI:
+
 ```sh
 pipx install aislop
 aislop scan
