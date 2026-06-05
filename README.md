@@ -52,11 +52,7 @@ The Python package version should track the npm CLI version. For example, `aislo
 
 Do not default this launcher to `aislop@latest`: a user who installs a fixed PyPI version expects that installed package to keep running the same CLI version until they upgrade it.
 
-For temporary testing only, override the npm package:
-
-```sh
-AISLOP_NPM_PACKAGE=aislop@latest aislop --version
-```
+Users can run `aislop upgrade` to check the latest npm release and see the direct npm upgrade command.
 
 ## Upgrade Users
 
@@ -71,6 +67,8 @@ Public PyPI install:
 ```sh
 pipx upgrade aislop
 ```
+
+Users can run `aislop upgrade` at any time to check whether a newer npm release is available.
 
 ## Update The Launcher
 
