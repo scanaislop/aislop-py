@@ -23,9 +23,7 @@ def _run(bin_name: str, argv: list[str] | None = None) -> int:
     args = list(sys.argv[1:] if argv is None else argv)
     command = _command(bin_name, args)
     if command is None:
-        print(
-            "aislop requires Node.js with npm/npx available on PATH.", file=sys.stderr
-        )
+        print("aislop for Python requires Node.js tooling on PATH.", file=sys.stderr)
         return 127
 
     os.execv(command[0], command)

@@ -1,8 +1,8 @@
 # aislop for Python
 
-Python launcher package for the npm-published `aislop` CLI.
+Python launcher package for the `aislop` CLI.
 
-This package is for Python and `pipx` users who want an `aislop` command without using npm directly. It delegates to the matching npm package version, so Node.js and npm/npx must be available on the machine.
+This package is for Python and `pipx` users who want an `aislop` command from Python packaging tools. Node.js must be available on the machine.
 
 It exposes:
 
@@ -23,12 +23,6 @@ Public install after publishing to PyPI:
 pipx install aislop
 ```
 
-Direct npm install remains the canonical path:
-
-```sh
-npm install -g aislop
-```
-
 ## Use
 
 ```sh
@@ -38,21 +32,15 @@ aislop ci
 aislop-mcp
 ```
 
-The launcher runs:
-
-```sh
-npx --yes --package aislop@0.10.2 aislop
-```
-
-That keeps this package small, but it also means first run may download the npm package if it is not already cached.
+The launcher keeps the Python package small while exposing the same `aislop` commands.
 
 ## Versioning Model
 
-The Python package version should track the npm CLI version. For example, `aislop==0.10.2` launches `aislop@0.10.2`.
+The Python package version should track the CLI version. For example, `aislop==0.10.2` launches the `0.10.2` CLI.
 
-Do not default this launcher to `aislop@latest`: a user who installs a fixed PyPI version expects that installed package to keep running the same CLI version until they upgrade it.
+Do not make a fixed PyPI release float to a newer CLI version automatically. A user who installs a fixed PyPI version expects that installed package to keep running the same CLI version until they upgrade it.
 
-Users can run `aislop upgrade` to check the latest npm release and see the direct npm upgrade command.
+Users can run `aislop upgrade` to check whether a newer release is available.
 
 ## Upgrade Users
 
@@ -68,11 +56,11 @@ Public PyPI install:
 pipx upgrade aislop
 ```
 
-Users can run `aislop upgrade` at any time to check whether a newer npm release is available.
+Users can run `aislop upgrade` at any time to check whether a newer release is available.
 
 ## Update The Launcher
 
-Run this after a new `aislop` version is published to npm:
+Run this after a new `aislop` version is published:
 
 ```sh
 scripts/update-version.sh 0.10.3
@@ -122,7 +110,7 @@ aislop --version
 
 ## Troubleshooting
 
-If the command exits with `aislop requires Node.js with npm/npx available on PATH.`, install Node.js first:
+If the command exits with a Node.js tooling error, install Node.js first:
 
 ```sh
 brew install node
