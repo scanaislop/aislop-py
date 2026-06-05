@@ -66,3 +66,5 @@ The publish workflow only runs when package files change:
 
 - `pyproject.toml`
 - `src/**`
+
+For the first publish from an already-created branch, run the `Publish` workflow manually from GitHub and select the `test` branch.
