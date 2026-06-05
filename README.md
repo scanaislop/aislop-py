@@ -1,114 +1,203 @@
 # aislop for Python
 
-Python launcher package for the `aislop` CLI.
+**Catch the slop AI coding agents leave in your code.**
 
-This package is for Python and `pipx` users who want an `aislop` command from Python packaging tools. Node.js must be available on the machine.
+[![PyPI version](https://img.shields.io/pypi/v/aislop.svg)](https://pypi.org/project/aislop/)
+[![npm downloads](https://img.shields.io/npm/dm/aislop.svg)](https://www.npmjs.com/package/aislop)
+[![PyPI downloads](https://img.shields.io/pepy/dt/aislop.svg?label=PyPI%20downloads)](https://pepy.tech/project/aislop)
+[![Homebrew tap](https://img.shields.io/badge/Homebrew-scanaislop%2Ftap-2f855a.svg)](https://github.com/scanaislop/homebrew-tap)
+[![GitHub stars](https://img.shields.io/github/stars/scanaislop/aislop.svg?label=GitHub%20stars)](https://github.com/scanaislop/aislop)
+[![CI](https://github.com/scanaislop/aislop/actions/workflows/ci.yml/badge.svg)](https://github.com/scanaislop/aislop/actions/workflows/ci.yml)
+[![aislop score](https://badges.scanaislop.com/score/scanaislop/aislop.svg)](https://scanaislop.com/scanaislop/aislop)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.9+](https://img.shields.io/badge/python-%3E%3D3.9-brightgreen.svg)](https://www.python.org)
 
-It exposes:
+The patterns Claude Code, Cursor, Codex, and OpenCode leave behind: narrative comments above self-explanatory code, swallowed exceptions, `as any` casts, hallucinated imports, duplicated helpers, dead code, todo stubs, oversized functions. Tests pass. Lint passes. The code rots anyway.
 
-- `aislop`
-- `aislop-mcp`
+[aislop](https://github.com/scanaislop/aislop) catches them. 50+ rules across 8 language targets (TypeScript, JavaScript, Expo / React Native, Python, Go, Rust, Ruby, PHP). Scores every change 0–100. Sub-second. Deterministic — no LLM in the runtime path, same code in, same score out. MIT-licensed, free CLI.
+
+> This package is the Python-tooling distribution of `aislop`. The CLI is identical across every channel. Prefer npm or Homebrew? See [other ways to install](#other-ways-to-install).
 
 ## Install
 
-Private install while this repo is private:
-
-```sh
-pipx install git+ssh://git@github.com/scanaislop/aislop-py.git
-```
-
-Public install after publishing to PyPI:
+Use `pipx` for a global, isolated, Python-managed CLI install:
 
 ```sh
 pipx install aislop
 ```
 
-## Use
+Then scan any project:
 
 ```sh
 aislop scan
-aislop fix
-aislop ci
-aislop-mcp
 ```
 
-The launcher keeps the Python package small while exposing the same `aislop` commands.
+`pipx` keeps `aislop` in its own virtual environment, so it never collides with your project dependencies. Plain `pip install --user aislop` also works if you prefer.
 
-## Versioning Model
+## First run
 
-The Python package version should track the CLI version. For example, `aislop==0.10.2` launches the `0.10.2` CLI.
-
-Do not make a fixed PyPI release float to a newer CLI version automatically. A user who installs a fixed PyPI version expects that installed package to keep running the same CLI version until they upgrade it.
-
-Users can run `aislop upgrade` to check whether a newer release is available.
-
-## Upgrade Users
-
-Private git install:
+From the root of a repo:
 
 ```sh
-pipx install --force git+ssh://git@github.com/scanaislop/aislop-py.git
+aislop scan
 ```
 
-Public PyPI install:
+You get a single 0–100 score and a list of findings. Common next steps:
+
+```sh
+aislop fix                   # auto-fix safe issues
+aislop fix -f                # aggressive fixes (deps, unused files)
+aislop ci                    # CI-friendly JSON output and exit code
+aislop hook install --claude # install a per-edit agent hook
+aislop rules                 # see every rule
+aislop doctor                # check local tool availability
+```
+
+## What gets installed
+
+This package exposes two commands:
+
+- `aislop` — the CLI
+- `aislop-mcp` — the MCP server, for tools that speak [Model Context Protocol](#mcp-server)
+
+## Requirements
+
+- Python 3.9+
+- `pipx` (or `pip`)
+- Node.js available on `PATH` — `aislop` runs Node-based engines under the hood
+
+On macOS:
+
+```sh
+brew install pipx node
+pipx ensurepath
+```
+
+On Debian/Ubuntu:
+
+```sh
+sudo apt install pipx
+pipx ensurepath
+# install Node.js from https://nodejs.org or your distro's nodesource setup
+```
+
+Run `aislop doctor` to confirm every engine can run on your machine.
+
+## Hand off to your agent
+
+When auto-fix can't solve an issue, pass the remaining findings to your coding agent with full context:
+
+```sh
+aislop fix --claude          # Claude Code
+aislop fix --codex           # Codex CLI
+aislop fix --cursor          # Cursor (copies to clipboard)
+aislop fix --gemini          # Gemini CLI
+aislop fix --prompt          # print an agent-agnostic prompt
+```
+
+Install a hook so feedback flows back after every edit:
+
+```sh
+aislop hook install --claude # Claude Code
+aislop hook install          # pick agents interactively
+```
+
+## MCP server
+
+Expose `aislop` as MCP tools (`aislop_scan`, `aislop_fix`, `aislop_why`, `aislop_baseline`) for Claude Desktop, Cursor, or Codex:
+
+```jsonc
+{
+  "mcpServers": {
+    "aislop": {
+      "command": "aislop-mcp"
+    }
+  }
+}
+```
+
+## CI
+
+```sh
+aislop scan --staged              # staged files before commit
+aislop ci                         # JSON output, exits 1 if score < threshold
+aislop scan --sarif > aislop.sarif # SARIF 2.1.0 for GitHub code scanning
+```
+
+Set a minimum score in `.aislop/config.yml`:
+
+```yaml
+ci:
+  failBelow: 70
+```
+
+More: [CI/CD docs](https://scanaislop.com/docs/ci).
+
+## Configure
+
+Tune rules, severities, and excluded paths in `.aislop/config.yml`:
+
+```yaml
+exclude:
+  - "**/*_test.py"
+  - src/generated
+rules:
+  ai-slop/narrative-comment: warning   # error | warning | off
+```
+
+Run `aislop init` to scaffold one. Full reference: [configuration docs](https://scanaislop.com/docs/configuration).
+
+## Upgrade
+
+Upgrade the Python package:
 
 ```sh
 pipx upgrade aislop
 ```
 
-Users can run `aislop upgrade` at any time to check whether a newer release is available.
-
-## Update The Launcher
-
-Run this after a new `aislop` version is published:
+Check whether a newer release is available:
 
 ```sh
-scripts/update-version.sh 0.10.3
+aislop upgrade
 ```
 
-Then validate:
+## Examples
 
 ```sh
-PYTHONPATH=src python3 -m unittest discover -s tests
-python3 -m pip wheel . --wheel-dir dist
-pipx install --force .
-aislop --version
+aislop scan --changes         # only changed files from HEAD
+aislop scan --staged          # staged files before commit
+aislop scan --sarif > aislop.sarif  # SARIF for GitHub code scanning
+aislop badge                  # generate a public score badge
 ```
-
-Commit and push:
-
-```sh
-git add pyproject.toml src/aislop_py tests
-git commit -m "Update aislop launcher to 0.10.3"
-git push
-```
-
-## Publish To PyPI
-
-Publishing is automated from GitHub Actions:
-
-- `test` publishes to TestPyPI.
-- `develop` does not publish.
-- `main` publishes to PyPI.
-
-See [`docs/publishing.md`](docs/publishing.md).
 
 ## Troubleshooting
 
-If the command exits with a Node.js tooling error, install Node.js first:
+**`aislop: command not found` after install** — run `pipx ensurepath` and reopen your shell so the `pipx` bin directory is on `PATH`.
+
+**`Node.js not found`** — `aislop` needs Node on `PATH`. Install it (`brew install node`, or from [nodejs.org](https://nodejs.org)) and re-run `aislop doctor`.
+
+**Command already exists** — if another install (npm or Homebrew) already owns `aislop`, pick one source. To replace it with the pipx copy: `pipx install --force aislop`.
+
+## Other ways to install
+
+The same CLI ships through three channels:
 
 ```sh
-brew install node
+pipx install aislop           # Python (this package)
+brew install scanaislop/tap/aislop   # Homebrew
+npx aislop@latest scan        # npm / Node (no install)
 ```
 
-If the wrong version runs, reinstall the launcher:
+See the [Homebrew tap](https://github.com/scanaislop/homebrew-tap) and the [main project README](https://github.com/scanaislop/aislop) for the npm-family options.
 
-```sh
-pipx install --force aislop
-```
+## For teams
 
-For private installs:
+[scanaislop](https://scanaislop.com) is the hosted platform for teams: PR gates with score thresholds, an org → team → project standards hierarchy, dashboards, and agent attribution. Same engines, same scores. The CLI is MIT-licensed and free.
 
-```sh
-pipx install --force git+ssh://git@github.com/scanaislop/aislop-py.git
-```
+## Links
+
+- Main project: https://github.com/scanaislop/aislop
+- Docs: https://scanaislop.com/docs
+- Issues: https://github.com/scanaislop/aislop/issues
+- PyPI package: https://pypi.org/project/aislop/
+- Homebrew tap: https://github.com/scanaislop/homebrew-tap
