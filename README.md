@@ -1,16 +1,19 @@
 # aislop for Python
 
-Install `aislop` with Python tooling and scan your code for AI slop.
+**Catch the slop AI coding agents leave in your code.**
 
 [![PyPI version](https://img.shields.io/pypi/v/aislop.svg)](https://pypi.org/project/aislop/)
+[![npm downloads](https://img.shields.io/npm/dm/aislop.svg)](https://www.npmjs.com/package/aislop)
 [![PyPI downloads](https://img.shields.io/pepy/dt/aislop.svg?label=PyPI%20downloads)](https://pepy.tech/project/aislop)
-[![GitHub stars](https://img.shields.io/github/stars/scanaislop/aislop.svg?label=GitHub%20stars)](https://github.com/scanaislop/aislop)
-[![Quality score](https://badges.scanaislop.com/score/scanaislop/aislop.svg)](https://scanaislop.com/scanaislop/aislop)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/scanaislop/aislop/blob/main/LICENSE)
+[![Homebrew tap](https://img.shields.io/badge/Homebrew-scanaislop%2Ftap-2f855a.svg)](https://github.com/scanaislop/homebrew-tap)
+[![CI](https://github.com/scanaislop/aislop/actions/workflows/ci.yml/badge.svg)](https://github.com/scanaislop/aislop/actions/workflows/ci.yml)
+[![aislop score](https://badges.scanaislop.com/score/scanaislop/aislop.svg)](https://scanaislop.com/scanaislop/aislop)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.9+](https://img.shields.io/badge/python-%3E%3D3.9-brightgreen.svg)](https://www.python.org)
 
-`aislop` catches the low-quality patterns AI coding agents leave behind: narrative comments, swallowed exceptions, unsafe casts, duplicated helpers, dead code, todo stubs, oversized functions, risky APIs, and dependency issues.
+The patterns Claude Code, Cursor, Codex, and OpenCode leave behind: narrative comments above self-explanatory code, swallowed exceptions, `as any` casts, hallucinated imports, duplicated helpers, dead code, todo stubs, oversized functions. Tests pass. Lint passes. The code rots anyway.
 
-It supports TypeScript, JavaScript, Expo / React Native, Python, Go, Rust, Ruby, and PHP. It is deterministic, fast, and does not call an LLM at runtime: same code in, same score out.
+[aislop](https://github.com/scanaislop/aislop) catches them. 50+ rules across 8 language targets (TypeScript, JavaScript, Expo / React Native, Python, Go, Rust, Ruby, PHP). Scores every change 0–100. Sub-second. Deterministic — no LLM in the runtime path, same code in, same score out. MIT-licensed, free CLI.
 
 > This package is the Python-tooling distribution of `aislop`. The CLI is identical across every channel. Prefer npm or Homebrew? See [other ways to install](#other-ways-to-install).
 
