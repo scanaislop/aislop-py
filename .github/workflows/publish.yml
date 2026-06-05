@@ -59,6 +59,25 @@ jobs:
         with:
           name: python-package-distributions
           path: dist/
+      - name: Require matching TestPyPI release
+        run: |
+          version="$(python - <<'PY'
+          from pathlib import Path
+          import re
+
+          wheels = sorted(Path("dist").glob("aislop-*.whl"))
+          if not wheels:
+              raise SystemExit("No aislop wheel found in dist/")
+
+          match = re.match(r"aislop-(.+?)-py3-none-any\.whl", wheels[0].name)
+          if not match:
+              raise SystemExit(f"Could not parse version from {wheels[0].name}")
+
+          print(match.group(1))
+          PY
+          )"
+          curl --fail --silent --show-error "https://test.pypi.org/pypi/aislop/${version}/json" >/dev/null
+          echo "Found aislop ${version} on TestPyPI."
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
