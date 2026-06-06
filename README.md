@@ -177,7 +177,7 @@ The same CLI is also available on npm, Yarn, Bun, and Homebrew:
 ```sh
 pipx install aislop                  # Python (this package)
 npm install -g aislop                # npm
-yarn global add aislop               # Yarn
+yarn dlx aislop scan                 # Yarn (no install)
 bun add -g aislop                    # Bun
 brew install scanaislop/tap/aislop   # Homebrew
 ```
