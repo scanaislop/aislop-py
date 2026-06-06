@@ -2,15 +2,7 @@
 
 **Catch the slop AI coding agents leave in your code.**
 
-[![PyPI version](https://img.shields.io/pypi/v/aislop.svg)](https://pypi.org/project/aislop/)
-[![npm downloads](https://img.shields.io/npm/dm/aislop.svg)](https://www.npmjs.com/package/aislop)
-[![PyPI downloads](https://img.shields.io/pepy/dt/aislop.svg?label=PyPI%20downloads)](https://pepy.tech/project/aislop)
-[![Homebrew tap](https://img.shields.io/badge/Homebrew-scanaislop%2Ftap-2f855a.svg)](https://github.com/scanaislop/homebrew-tap)
-[![GitHub stars](https://img.shields.io/github/stars/scanaislop/aislop.svg?label=GitHub%20stars)](https://github.com/scanaislop/aislop)
-[![CI](https://github.com/scanaislop/aislop/actions/workflows/ci.yml/badge.svg)](https://github.com/scanaislop/aislop/actions/workflows/ci.yml)
-[![aislop score](https://badges.scanaislop.com/score/scanaislop/aislop.svg)](https://scanaislop.com/scanaislop/aislop)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.9+](https://img.shields.io/badge/python-%3E%3D3.9-brightgreen.svg)](https://www.python.org)
+[![PyPI version](https://img.shields.io/pypi/v/aislop.svg)](https://pypi.org/project/aislop/) [![npm downloads](https://img.shields.io/npm/dm/aislop.svg)](https://www.npmjs.com/package/aislop) [![PyPI downloads](https://img.shields.io/pepy/dt/aislop.svg?label=PyPI%20downloads)](https://pepy.tech/project/aislop) [![Homebrew tap](https://img.shields.io/badge/Homebrew-scanaislop%2Ftap-2f855a.svg)](https://github.com/scanaislop/homebrew-tap) [![GitHub stars](https://img.shields.io/github/stars/scanaislop/aislop.svg?label=GitHub%20stars)](https://github.com/scanaislop/aislop) [![CI](https://github.com/scanaislop/aislop/actions/workflows/ci.yml/badge.svg)](https://github.com/scanaislop/aislop/actions/workflows/ci.yml) [![aislop score](https://badges.scanaislop.com/score/scanaislop/aislop.svg)](https://scanaislop.com/scanaislop/aislop) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![Python 3.9+](https://img.shields.io/badge/python-%3E%3D3.9-brightgreen.svg)](https://www.python.org)
 
 The patterns Claude Code, Cursor, Codex, and OpenCode leave behind: narrative comments above self-explanatory code, swallowed exceptions, `as any` casts, hallucinated imports, duplicated helpers, dead code, todo stubs, oversized functions. Tests pass. Lint passes. The code rots anyway.
 
@@ -180,12 +172,14 @@ aislop badge                  # generate a public score badge
 
 ## Other ways to install
 
-The same CLI ships through three channels:
+The same CLI is also available on npm, Yarn, Bun, and Homebrew:
 
 ```sh
-pipx install aislop           # Python (this package)
+pipx install aislop                  # Python (this package)
+npm install -g aislop                # npm
+yarn dlx aislop scan                 # Yarn (no install)
+bun add -g aislop                    # Bun
 brew install scanaislop/tap/aislop   # Homebrew
-npx aislop@latest scan        # npm / Node (no install)
 ```
 
 See the [Homebrew tap](https://github.com/scanaislop/homebrew-tap) and the [main project README](https://github.com/scanaislop/aislop) for the npm-family options.
