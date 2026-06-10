@@ -45,7 +45,9 @@ aislop --version
 
 Add `PYPI_API_TOKEN` before merging package changes into `main`.
 
-Merge package changes into `main`. The `Publish` workflow will build the package and upload it to PyPI.
+Publish the same version to TestPyPI first. The `main` publish job refuses to upload to PyPI unless the built package version already exists on TestPyPI.
+
+Merge package changes into `main` only after the TestPyPI publish has passed. The `Publish` workflow will build the package, check TestPyPI, and upload it to PyPI.
 
 Verify:
 
