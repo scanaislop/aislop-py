@@ -4,7 +4,9 @@ import os
 import shutil
 import sys
 
-NPM_PACKAGE = os.environ.get("AISLOP_NPM_PACKAGE", "aislop@0.10.2")
+from . import __version__
+
+NPM_PACKAGE = os.environ.get("AISLOP_NPM_PACKAGE", f"aislop@{__version__}")
 
 
 def _command(bin_name: str, argv: list[str]) -> list[str] | None:
