@@ -65,6 +65,26 @@ class CommandTest(unittest.TestCase):
         with mock.patch("shutil.which", return_value=None):
             self.assertIsNone(cli._command("aislop", []))
 
+    def test_detect_install_channel_defaults_to_pip(self) -> None:
+        with mock.patch.dict("os.environ", {}, clear=True):
+            with mock.patch("sys.argv", ["aislop", "scan"]):
+                self.assertEqual(cli._detect_install_channel(), "pip")
+
+    def test_detect_install_channel_recognizes_pipx(self) -> None:
+        pipx_script = "/Users/me/.local/pipx/venvs/aislop/bin/aislop"
+        with mock.patch.dict("os.environ", {}, clear=True):
+            with mock.patch("sys.argv", [pipx_script, "scan"]):
+                self.assertEqual(cli._detect_install_channel(), "pipx")
+
+    def test_run_sets_install_channel_before_exec(self) -> None:
+        with mock.patch("shutil.which", return_value="/bin/npx"):
+            with mock.patch("os.execve") as execve:
+                with mock.patch.dict("os.environ", {}, clear=True):
+                    with mock.patch("sys.argv", ["aislop", "scan"]):
+                        cli._run("aislop", ["scan"])
+        env = execve.call_args[0][2]
+        self.assertEqual(env["AISLOP_INSTALL_CHANNEL"], "pip")
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -52,6 +52,8 @@ This package exposes two commands:
 - `aislop` — the CLI
 - `aislop-mcp` — the MCP server, for tools that speak [Model Context Protocol](#mcp-server)
 
+The launcher pins `aislop@<this package version>` on npm and tags anonymous telemetry with `AISLOP_INSTALL_CHANNEL=pip` or `pipx` so Python installs are counted separately from raw `npx` traffic. Opt out with `AISLOP_NO_TELEMETRY=1` or `DO_NOT_TRACK=1`.
+
 ## Requirements
 
 - Python 3.9+
