@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "aislop"
-version = "0.13.0"
+version = "0.13.1"
 description = "Install aislop with Python tooling and scan your code for AI slop"
 readme = "README.md"
 requires-python = ">=3.9"
