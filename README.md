@@ -192,6 +192,7 @@ See the [Homebrew tap](https://github.com/scanaislop/homebrew-tap) and the [main
 
 ## Links
 
+- Discord community: https://discord.gg/Mzz4A6mfj6
 - Main project: https://github.com/scanaislop/aislop
 - Docs: https://scanaislop.com/docs
 - Issues: https://github.com/scanaislop/aislop/issues
