@@ -1,22 +1,25 @@
 [build-system]
-requires = ["setuptools>=77", "wheel"]
+requires = ["setuptools==80.9.0", "wheel==0.47.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "aislop"
-version = "0.14.0"
+version = "0.14.1"
 description = "Install aislop with Python tooling and scan your code for AI slop"
 readme = "README.md"
 requires-python = ">=3.9"
 license = "MIT"
 authors = [
-  { name = "Kenny Olawuwo" }
+  { name = "Scanaislop" }
 ]
 keywords = [
   "aislop",
   "ai-slop",
   "cli",
   "code-quality",
+  "cpp",
+  "csharp",
+  "dotnet",
   "static-analysis"
 ]
 classifiers = [
