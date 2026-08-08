@@ -4,9 +4,9 @@
 
 [![PyPI version](https://img.shields.io/pypi/v/aislop.svg)](https://pypi.org/project/aislop/) [![npm downloads](https://img.shields.io/npm/dm/aislop.svg)](https://www.npmjs.com/package/aislop) [![PyPI downloads](https://img.shields.io/pepy/dt/aislop.svg?label=PyPI%20downloads)](https://pepy.tech/project/aislop) [![Homebrew tap](https://img.shields.io/badge/Homebrew-scanaislop%2Ftap-2f855a.svg)](https://github.com/scanaislop/homebrew-tap) [![GitHub stars](https://img.shields.io/github/stars/scanaislop/aislop.svg?label=GitHub%20stars)](https://github.com/scanaislop/aislop) [![CI](https://github.com/scanaislop/aislop/actions/workflows/ci.yml/badge.svg)](https://github.com/scanaislop/aislop/actions/workflows/ci.yml) [![aislop score](https://badges.scanaislop.com/score/scanaislop/aislop.svg)](https://scanaislop.com/scanaislop/aislop) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT) [![Python 3.9+](https://img.shields.io/badge/python-%3E%3D3.9-brightgreen.svg)](https://www.python.org) [![Discord](https://img.shields.io/badge/Discord-Join-5865F2?logo=discord&logoColor=white)](https://discord.gg/Mzz4A6mfj6)
 
-The patterns Claude Code, Cursor, Codex, and OpenCode leave behind: narrative comments above self-explanatory code, swallowed exceptions, `as any` casts, hallucinated imports, duplicated helpers, dead code, todo stubs, oversized functions. Tests pass. Lint passes. The code rots anyway.
+The patterns Claude Code, Cursor, Codex, and OpenCode leave behind: narrative comments above self-explanatory code, swallowed exceptions, hidden fallbacks, `as any` casts, hallucinated imports, duplicated helpers, dead code, todo stubs, oversized functions. Tests pass. Lint passes. The code rots anyway.
 
-[aislop](https://github.com/scanaislop/aislop) catches them. 50+ rules across 8 language targets (TypeScript, JavaScript, Expo / React Native, Python, Go, Rust, Ruby, PHP). Scores every change 0–100. Sub-second. Deterministic — no LLM in the runtime path, same code in, same score out. MIT-licensed, free CLI.
+[aislop](https://github.com/scanaislop/aislop) catches them. 50+ rules across 10 language targets (TypeScript, JavaScript, Expo / React Native, Python, Go, Rust, Ruby, PHP, C#, C/C++). Scores every change 0–100. Sub-second. Deterministic — no LLM in the runtime path, same code in, same score out. MIT-licensed, free CLI.
 
 > This package is the Python-tooling distribution of `aislop`. The CLI is identical across every channel. Prefer npm or Homebrew? See [other ways to install](#other-ways-to-install).
 
@@ -76,6 +76,8 @@ pipx ensurepath
 ```
 
 Run `aislop doctor` to confirm every engine can run on your machine.
+
+C# and C/C++ receive built-in text and complexity checks. Optional project-aware tools are documented in the [main installation guide](https://github.com/scanaislop/aislop/blob/main/docs/installation.md#optional-language-tools).
 
 ## Hand off to your agent
 
