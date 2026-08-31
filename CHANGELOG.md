@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Unreleased
 
+## 0.16.0 (2026-08-31)
+
+### Changed
+
+- Bumped the default `aislop@…` npm package pin to `0.16.0`.
+
+Upstream 0.16.0 is a scoping release: `fix` and `scan` can be limited to changed or staged files, and `fix --dry-run` previews its plan. Scores are unchanged from 0.15.0, so nothing needs re-baselining. See the [CLI changelog](https://github.com/scanaislop/aislop/blob/main/CHANGELOG.md) for the detail.
+
 ## 0.15.0 (2026-08-26)
 
 ### Changed
