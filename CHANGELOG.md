@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Unreleased
 
+## 0.16.1 (2026-09-09)
+
+### Changed
+
+- Bumped the default `aislop@…` npm package pin to `0.16.1`.
+
+Upstream 0.16.1 is a maintenance release: three Python rule fixes that stop `silent-recovery` and `hardcoded-url` firing where they should not, build directories pruned from scans, and dependency patches. Scores can move, since the rule fixes remove findings and the bundled lint engines were updated. See the [CLI changelog](https://github.com/scanaislop/aislop/blob/main/CHANGELOG.md) for the detail.
+
 ## 0.16.0 (2026-08-31)
 
 ### Changed
