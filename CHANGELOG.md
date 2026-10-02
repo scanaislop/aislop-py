@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Unreleased
 
+## 0.17.0 (2026-10-02)
+
+### Changed
+
+- Bumped the default `aislop@…` npm package pin to `0.17.0`.
+
+Upstream 0.17.0 adds per-file `overrides` in `.aislop/config.yml`, `pi` as a provider for `aislop agent`, a hook install suggestion after a scan, and PII-free command failure telemetry. `aislop fix` now keeps exports that are still used in their own file, and dependency advisories are patched. Scores only change if you add `overrides` or the newer bundled `knip` reports differently. See the [CLI changelog](https://github.com/scanaislop/aislop/blob/main/CHANGELOG.md) for the detail.
+
 ## 0.16.1 (2026-09-09)
 
 ### Changed
