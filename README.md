@@ -136,10 +136,12 @@ Run aislop on staged files with [pre-commit](https://pre-commit.com) or [prek](h
 ```yaml
 repos:
   - repo: https://github.com/scanaislop/aislop-py
-    rev: v0.17.0
+    rev: vX.Y.Z
     hooks:
       - id: aislop
 ```
+
+Set `rev` to a release tag, or run `pre-commit autoupdate` to pin the latest one.
 
 ## Configure
 
