@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Unreleased
 
+### Added
+
+- A `.pre-commit-hooks.yaml` with a `language: python` `aislop` hook that runs `aislop scan --staged`, for pre-commit and prek users. Thanks to @pygarap.
+
 ## 0.17.0 (2026-10-02)
 
 ### Changed
