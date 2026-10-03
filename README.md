@@ -129,6 +129,20 @@ ci:
 
 More: [CI/CD docs](https://scanaislop.com/docs/ci).
 
+## pre-commit
+
+Run aislop on staged files with [pre-commit](https://pre-commit.com) or [prek](https://github.com/j178/prek). pre-commit installs the package into its own environment. Node.js still needs to be on `PATH`.
+
+```yaml
+repos:
+  - repo: https://github.com/scanaislop/aislop-py
+    rev: vX.Y.Z
+    hooks:
+      - id: aislop
+```
+
+Set `rev` to a release tag, or run `pre-commit autoupdate` to pin the latest one.
+
 ## Configure
 
 Tune rules, severities, and excluded paths in `.aislop/config.yml`:
