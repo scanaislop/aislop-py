@@ -6,9 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Unreleased
 
+## 0.18.0 (2026-10-03)
+
 ### Added
 
-- A `.pre-commit-hooks.yaml` with a `language: python` `aislop` hook that runs `aislop scan --staged`, for pre-commit and prek users. Thanks to @pygarap.
+- A `.pre-commit-hooks.yaml` with a `language: python` `aislop` hook that runs `aislop scan --staged` at the pre-commit stage, for pre-commit and prek users (pre-commit 3.2.0 or later). Thanks to @pygarap.
+
+### Changed
+
+- Bumped the default `aislop@…` npm package pin to `0.18.0`.
+
+Upstream 0.18.0 adds baseline mode (`aislop baseline write`, `ci.baseline`) so CI fails only on new findings. Python import checks now read every `requirements*.txt` variant, `-r` includes, and PEP 723 script metadata, and `imports.provided` lists modules the runtime supplies. aislop uses the project's own virtualenv ruff and respects ruff's `exclude` settings, and missing tools are reported instead of silently skipped. See the [CLI changelog](https://github.com/scanaislop/aislop/blob/main/CHANGELOG.md) for the detail.
 
 ## 0.17.0 (2026-10-02)
 
