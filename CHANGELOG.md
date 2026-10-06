@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Unreleased
 
+## 0.18.1 (2026-10-06)
+
+### Changed
+
+- Bumped the default `aislop@…` npm package pin to `0.18.1`.
+
+Upstream 0.18.1 makes the GitHub Action run the CLI version that matches its pinned ref, shows the provider's own error when `aislop agent` fails, and patches dependency advisories. See the [CLI changelog](https://github.com/scanaislop/aislop/blob/main/CHANGELOG.md) for the detail.
+
 ## 0.18.0 (2026-10-03)
 
 ### Added
