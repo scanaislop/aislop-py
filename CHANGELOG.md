@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Unreleased
 
+## 0.19.0 (2026-10-28)
+
+### Changed
+
+- Bumped the default `aislop@…` npm package pin to `0.19.0`.
+
+Upstream 0.19.0 adds Java support and a `quality.knip` setting, and fixes false positives and missed findings across `hardcoded-url`, `unsafe-type-assertion`, `no-undef`, `unused-css`, secret detection and dependency advice. See the [CLI changelog](https://github.com/scanaislop/aislop/blob/main/CHANGELOG.md) for the detail.
+
 ## 0.18.1 (2026-10-06)
 
 ### Changed
