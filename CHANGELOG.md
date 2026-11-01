@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Unreleased
 
+## 0.20.0 (2026-11-01)
+
+### Changed
+
+- Bumped the default `aislop@…` npm package pin to `0.20.0`.
+
+Upstream 0.20.0 adds `aislop scan --share`, which prints a public report link and README badge for public GitHub repos. See the [CLI changelog](https://github.com/scanaislop/aislop/blob/main/CHANGELOG.md) for the detail.
+
 ## 0.19.1 (2026-10-28)
 
 ### Changed
