@@ -196,6 +196,7 @@ The same CLI is also available on npm, Yarn, Bun, and Homebrew:
 pipx install aislop                  # Python (this package)
 npm install -g aislop                # npm
 yarn dlx aislop scan                 # Yarn (no install)
+bunx aislop scan                     # Bun (no install)
 bun add -g aislop                    # Bun
 brew install scanaislop/tap/aislop   # Homebrew
 ```
