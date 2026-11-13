@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Unreleased
 
+## 0.21.0 (2026-11-13)
+
+### Changed
+
+- Pin the Python launcher to `aislop@0.21.0` on npm.
+
+Upstream 0.21.0 adds per-run rule ignores, scan-scope explanations, opt-in post-fix project checks with rollback, and Scala support in beta. It also includes the Python diagnostic fixes from 0.20.1. Scala 3 indentation-based syntax and real-world scalafmt integration remain ongoing work. See the [CLI changelog](https://github.com/scanaislop/aislop/blob/main/CHANGELOG.md) for details.
+
 ## 0.20.0 (2026-11-01)
 
 ### Changed
