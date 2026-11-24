@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Unreleased
 
+## 0.23.0 (2026-11-24)
+
+- Pin the Python launcher to `aislop@0.23.0` on npm, including its packaged Python analysis engine.
+
 ## 0.22.3 (2026-11-22)
 
 - Pin the Python launcher to `aislop@0.22.3` on npm.
